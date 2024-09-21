@@ -1,9 +1,9 @@
 name: Deploy to Lightsail
 
 on:
-  push:  # Trigger on push events
+  push: # Trigger on push events
     branches:
-      - main  # ... to `main` (this will trigger the workflow when a PR is merged to `main`, if branch protection rules are in place)
+      - main # ... to `main` (this will trigger the workflow when a PR is merged to `main`, if branch protection rules are in place)
 
 jobs:
   deploy:

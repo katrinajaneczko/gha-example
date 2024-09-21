@@ -1,9 +1,9 @@
 name: Build and Push to AWS ECR
 
 on:
-  pull_request:  # Trigger on pull request events
+  pull_request: # Trigger on pull request events
     branches:
-      - main  # ...to the main branch
+      - main # ...to the main branch
   workflow_dispatch: # Also allow manual trigger
 
 jobs:

@@ -1,34 +1,25 @@
-# This workflow is for running ESLint on your JavaScript code
-name: Lint
+# This workflow is for running Prettier for code formatting on the code
+name: Prettier
 
 # This section defines when the workflow should be triggered.
 on:
-  push:  # Trigger when any code is pushed to the repository, to any branch
+  push: # Trigger when any code is pushed to the repository, to any branch
 
 # Define the jobs that the workflow will execute.
 jobs:
-  lint:  # The name of the job. 
-    runs-on: ubuntu-latest  # Use the latest Ubuntu environment for the job.
+  lint: # The name of the job.
+    runs-on: ubuntu-latest # Use the latest Ubuntu environment for the job.
 
     # Define the sequence of steps that the job will perform.
     steps:
       # Step 1: Check out the code from your repository.
       - name: Checkout code
-        uses: actions/checkout@v4  # Use the checkout action to clone your repository.
-
-      # Step 2: Set up Node
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/checkout@v4 # Use the checkout action to clone your repository.
         with:
-          node-version: 18
+          ref: ${{ github.head_ref }}
 
-      # Step 3: Install dependencies -- note that ESLint and Prettier must be in `package.json`
-      - name: Install Node.js dependencies
-        run: npm ci
-
-      # Step 4: Run ESLint & Prettier using the pre-built action
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
+      # Step 2: Check if code is formatted well or if changes need to occur.
+      - name: Pretty dry run
+        uses: creyD/prettier_action@v4.3
         with:
-          eslint: true
-          prettier: true
+          options: --check
