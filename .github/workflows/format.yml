@@ -7,7 +7,7 @@ on:
 
 # Define the jobs that the workflow will execute.
 jobs:
-  lint: # The name of the job.
+  prettify: # The name of the job.
     runs-on: ubuntu-latest # Use the latest Ubuntu environment for the job.
 
     # Define the sequence of steps that the job will perform.
@@ -19,11 +19,11 @@ jobs:
           ref: ${{ github.head_ref }}
 
       # Step 2: Check if code is formatted well or if changes need to occur.
-      - name: Pretty dry run
-        uses: creyD/prettier_action@v4.3
-        with:
-          prettier_options: --check **/*.{js,md,json}
-          dry: True
+      # - name: Pretty dry run
+      #   uses: creyD/prettier_action@v4.3
+      #   with:
+      #     prettier_options: --check **/*.{js,md,json}
+      #     dry: True
 
       # Step 3: Make the changes
       - name: Prettify
