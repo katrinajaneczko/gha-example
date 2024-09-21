@@ -22,4 +22,5 @@ jobs:
       - name: Pretty dry run
         uses: creyD/prettier_action@v4.3
         with:
-          options: --check
+          prettier_options: --check
+          dry: True
