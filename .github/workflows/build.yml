@@ -4,6 +4,7 @@ on:
   pull_request:  # Trigger on pull request events
     branches:
       - main  # ...to the main branch
+  workflow_dispatch: # Also allow manual trigger
 
 jobs:
   build:
@@ -12,16 +13,16 @@ jobs:
     steps:
       # Step 1: Checkout the code
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Step 2: Set up Docker Buildx (optional)
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       # Step 3: Log in to ECR
       - name: Login to Amazon ECR
         id: ecr-login
-        uses: aws-actions/amazon-ecr-login@v1
+        uses: aws-actions/amazon-ecr-login@v2
 
       # Step 4: Build the Docker image
       - name: Build Docker image
