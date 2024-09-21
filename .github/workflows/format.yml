@@ -1,5 +1,5 @@
 # This workflow is for running Prettier for code formatting on the code
-name: Prettier
+name: Format with Prettier
 
 # This section defines when the workflow should be triggered.
 on:
