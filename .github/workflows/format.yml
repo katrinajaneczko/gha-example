@@ -22,5 +22,11 @@ jobs:
       - name: Pretty dry run
         uses: creyD/prettier_action@v4.3
         with:
-          prettier_options: --check
+          prettier_options: --check **/*.{js,md,json}
           dry: True
+
+      # Step 3: Make the changes
+      - name: Prettify
+        uses: creyD/prettier_action@v4.3
+        with:
+          prettier_options: --write **/*.{js,md,json}
