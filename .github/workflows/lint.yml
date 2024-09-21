@@ -16,7 +16,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4  # Use the checkout action to clone your repository.
 
-      # Step 2: Run ESLint & Prettier using a pre-built action.
+      # Step 2: Set up Node
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      # Step 3: Install dependencies -- note that ESLint and Prettier must be in `package.json`
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      # Step 4: Run ESLint & Prettier using the pre-built action
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
