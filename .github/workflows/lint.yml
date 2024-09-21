@@ -1,0 +1,25 @@
+# This workflow is for running ESLint on your JavaScript code
+name: Lint
+
+# This section defines when the workflow should be triggered.
+on:
+  push:  # Trigger when any code is pushed to the repository, to any branch
+
+# Define the jobs that the workflow will execute.
+jobs:
+  lint:  # The name of the job. 
+    runs-on: ubuntu-latest  # Use the latest Ubuntu environment for the job.
+
+    # Define the sequence of steps that the job will perform.
+    steps:
+      # Step 1: Check out the code from your repository.
+      - name: Checkout code
+        uses: actions/checkout@v2  # Use the checkout action to clone your repository.
+
+      # Step 2: Run ESLint using a pre-built action.
+      - name: Run ESLint
+        uses: crhyme/eslint-action@v1  # This action runs ESLint without needing local installation.
+        with:
+          eslint_args: '--ext .js .'  # Specify ESLint arguments; this tells it to lint all .js files in the repository.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Provide a GitHub token to access the repository. This is automatically set by GitHub Actions.
