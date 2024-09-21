@@ -16,10 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3  # Use the checkout action to clone your repository.
 
-      # Step 2: Run ESLint using a pre-built action.
-      - name: Run ESLint
-        uses: crhyme/eslint-action@v1  # This action runs ESLint without needing local installation.
+      # Step 2: Run ESLint & Prettier using a pre-built action.
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
         with:
-          eslint_args: '--ext .js .'  # Specify ESLint arguments; this tells it to lint all .js files in the repository.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Provide a GitHub token to access the repository. This is automatically set by GitHub Actions.
+          eslint: true
+          prettier: true
